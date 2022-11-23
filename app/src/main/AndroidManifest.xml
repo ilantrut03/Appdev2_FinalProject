@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.project">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Project">
+        <activity
+            android:name=".Review"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewsRecyclerAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewsRecycler"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".GithubAuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FavoritesRecyclerAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".FavoritesRecycler"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Timer"
+            android:exported="false" />
+        <activity
+            android:name=".Success"
+            android:exported="false" />
+        <activity
+            android:name=".Payment"
+            android:exported="false" />
+        <activity
+            android:name=".Recycler"
+            android:exported="false" />
+        <activity
+            android:name=".DestinationPage"
+            android:exported="false" />
+        <activity
+            android:name=".Intro"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
