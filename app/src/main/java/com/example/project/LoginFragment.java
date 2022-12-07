@@ -35,7 +35,9 @@ import org.w3c.dom.Text;
  * create an instance of this fragment.
  */
 public class LoginFragment extends Fragment {
+
     FirebaseAuth fAuth;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -84,14 +86,15 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fAuth = FirebaseAuth.getInstance();
+
         View view = inflater.inflate(R.layout.fragment_login, container, false);
+
         EditText emailInfo = view.findViewById(R.id.emailLoginField);
         EditText passwordInfo = view.findViewById(R.id.passwordLoginField);
         TextView forgotPassword = view.findViewById(R.id.forgotPassword);
+
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,8 +103,8 @@ public class LoginFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         Button register = view.findViewById(R.id.loginButton);
-        Button githubbtn = view.findViewById(R.id.githubLogin);
 
         googleSignInBtn = view.findViewById(R.id.googleLogin);
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -124,7 +127,7 @@ public class LoginFragment extends Fragment {
                 fAuth = FirebaseAuth.getInstance();
                 if (email.isEmpty() || password.isEmpty()) {
 
-                    message = Toast.makeText(getActivity(), "Please fill all the fields!", Toast.LENGTH_LONG);
+                    message = Toast.makeText(getActivity(), "Please fill out all the fields.", Toast.LENGTH_LONG);
                     message.show();
                 }
                 else {
@@ -132,7 +135,7 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(getActivity(), "You have logged in successfully!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "You have logged in successfully.", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getContext(), Recycler.class);
                                 startActivity(intent);
                             }
@@ -142,21 +145,8 @@ public class LoginFragment extends Fragment {
                         }
                     });
                 }
-
-            }
-
-        });
-
-
-        githubbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), GithubAuthActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
             }
         });
-
         return view;
     }
 
