@@ -157,6 +157,7 @@ public class SignUpFragment extends Fragment {
 
                     message = Toast.makeText(getActivity(), "You have registered successfully!", Toast.LENGTH_LONG);
                     message.show();
+
                     message = Toast.makeText(getActivity(), "Please sign in to continue!", Toast.LENGTH_LONG);
                     message.show();
                 }

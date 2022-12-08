@@ -39,7 +39,7 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Destination destination = destinationsList.get(position);
         holder.destinationName.setText(String.valueOf(destination.getName()));
-        holder.destinationPrice.setText(String.valueOf(destination.getPrice()));
+        holder.destinationPrice.setText("" + destination.getPrice());
         holder.destinationNights.setText("" + destination.getNights());
         Glide.with(destinationContext).load(destination.getImageUrl()).into(holder.destinationImage);
     }

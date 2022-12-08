@@ -32,12 +32,14 @@ public class DestinationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destination);
 
-        String name         = getIntent().getStringExtra("Name");
         String coordinates  = getIntent().getStringExtra("Coordinates");
-        String price        = getIntent().getStringExtra("Price");
         String image        = String.valueOf(getIntent().getStringExtra("Image"));
+        String name         = getIntent().getStringExtra("Name");
         int nights          = getIntent().getIntExtra("Nights" , 0);
         int people          = getIntent().getIntExtra("People", 0);
+        int price           = getIntent().getIntExtra("Price", 0);
+
+
 
         nameView       = findViewById(R.id.destinationName);
         priceView      = findViewById(R.id.priceView);
@@ -88,7 +90,7 @@ public class DestinationPage extends AppCompatActivity {
             }
         });
 
-        Destination destination = new Destination(name, coordinates, image, price, nights, people);
+        Destination destination = new Destination(coordinates, image, name, nights, people, price);
         String loggedInUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         favDBRef = FirebaseDatabase.getInstance().getReference().child("Favorites" + loggedInUserID);
         addToFavorite.setOnClickListener(new View.OnClickListener() {

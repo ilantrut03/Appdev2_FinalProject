@@ -2,46 +2,65 @@ package com.example.project;
 
 public class Destination {
 
-    private String name, imageUrl, price, coordinates;
-    private int nights, people;
+    private String coordinates, imageUrl, name;
+    private int nights, people, price;
 
     public Destination() {  }
 
-    public Destination(String name, String coordinates, String imageUrl, String price, int number_nights, int number_people) {
-        this.name = name;
+    public Destination(String coordinates, String imageUrl, String name, int nights, int people, int price) {
         this.coordinates = coordinates;
         this.imageUrl = imageUrl;
+        this.name = name;
+        this.nights = nights;
+        this.people = people;
         this.price = price;
-        this.nights = number_nights;
-        this.people = number_people;
     }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getCoordinates() {
+        return coordinates;
+    }
 
-    public String getCoordinates() { return coordinates; }
-    public void setCoordinates(String coordinates) { this.coordinates = coordinates; }
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
+    }
 
-    public String getImageUrl() { return imageUrl; }
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
-    public String getPrice() { return price; }
-    public void setPrice(String price) { this.price = price; }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
-    public int getNights() { return nights; }
-    public void setNumber_nights(int number_nights) { this.nights = number_nights; }
+    public String getName() {
+        return name;
+    }
 
-    public int getPeople() { return people; }
-    public void setNumber_people(int number_people) { this.people = number_people; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    @Override
-    public String toString() {
-        return "Destination{" +
-                "name='" + name + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", price='" + price + '\'' +
-                ", number_nights=" + nights +
-                ", number_people=" + people +
-                '}';
+    public int getNights() {
+        return nights;
+    }
+
+    public void setNights(int nights) {
+        this.nights = nights;
+    }
+
+    public int getPeople() {
+        return people;
+    }
+
+    public void setPeople(int people) {
+        this.people = people;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
