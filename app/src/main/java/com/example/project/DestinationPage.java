@@ -75,7 +75,7 @@ public class DestinationPage extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DestinationPage.this, Recycler.class);
+                Intent intent = new Intent(DestinationPage.this, Adventures.class);
                 startActivity(intent);
             }
         });

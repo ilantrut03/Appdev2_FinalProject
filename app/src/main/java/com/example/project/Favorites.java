@@ -9,11 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,12 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class FavoritesRecycler extends AppCompatActivity implements ListenerInterface {
+public class Favorites extends AppCompatActivity implements ListenerInterface {
 
     RecyclerView recyclerView;
     private DatabaseReference database;
     private ArrayList<Destination> favoriteList;
-    private FavoritesRecyclerAdapter favoriteRecyclerAdapter;
+    private FavoritesAdapter favoriteRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +39,7 @@ public class FavoritesRecycler extends AppCompatActivity implements ListenerInte
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         favoriteList = new ArrayList<>();
-        favoriteRecyclerAdapter = new FavoritesRecyclerAdapter(this, favoriteList, this);
+        favoriteRecyclerAdapter = new FavoritesAdapter(this, favoriteList, this);
         recyclerView.setAdapter(favoriteRecyclerAdapter);
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -92,7 +89,7 @@ public class FavoritesRecycler extends AppCompatActivity implements ListenerInte
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(FavoritesRecycler.this, DestinationPage.class);
+        Intent intent = new Intent(Favorites.this, DestinationPage.class);
         intent.putExtra("Name", favoriteList.get(position).getName());
         intent.putExtra("Image", favoriteList.get(position).getImageUrl());
         intent.putExtra("Price", favoriteList.get(position).getPrice());

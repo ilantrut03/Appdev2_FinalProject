@@ -24,8 +24,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import org.w3c.dom.Text;
 //import com.google.firebase.auth.AuthResult;
 //import com.google.firebase.auth.FirebaseAuth;
 
@@ -136,7 +134,7 @@ public class LoginFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "You have logged in successfully.", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getContext(), Recycler.class);
+                                Intent intent = new Intent(getContext(), Adventures.class);
                                 startActivity(intent);
                             }
                             else {
@@ -177,7 +175,7 @@ public class LoginFragment extends Fragment {
     }
     void navigateToSecondActivity(){
         getActivity().finish();
-        Intent intent = new Intent(getContext(),Recycler.class);
+        Intent intent = new Intent(getContext(), Adventures.class);
         startActivity(intent);
     }
 

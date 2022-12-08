@@ -4,19 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.media.Rating;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class ReviewsRecyclerAdapter extends RecyclerView.Adapter<ReviewsRecyclerAdapter.ViewHolder> {
+
     private final ListenerInterface listener;
     Context reviewContext;
     ArrayList<MyReview> reviewList;
@@ -38,8 +34,8 @@ public class ReviewsRecyclerAdapter extends RecyclerView.Adapter<ReviewsRecycler
     public void onBindViewHolder(@NonNull ReviewsRecyclerAdapter.ViewHolder holder, int position) {
         MyReview review = reviewList.get(position);
         holder.reviewName.setText(String.valueOf(review.getName()));
-        //holder.reviewScore.setRating(Integer.parseInt(String.valueOf(review.getScore())));
-        holder.reviewMessage.setText(String.valueOf(review.getText()));
+        // holder.reviewScore.setRating(Integer.parseInt(String.valueOf(review.getScore())));
+        holder.reviewMessage.setText(String.valueOf(review.getReview()));
     }
 
     @Override
@@ -48,15 +44,14 @@ public class ReviewsRecyclerAdapter extends RecyclerView.Adapter<ReviewsRecycler
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView reviewName;
-        RatingBar reviewScore;
-        TextView reviewMessage;
+
+        TextView reviewName, reviewScore, reviewMessage;
+
         public ViewHolder(@NonNull View itemView, ListenerInterface listener) {
             super(itemView);
-            reviewName = itemView.findViewById(R.id.reviewNameText);
-            reviewScore = itemView.findViewById(R.id.reviewRatingBar);
-            reviewMessage = itemView.findViewById(R.id.reviewMessageText);
-
+            reviewName      = itemView.findViewById(R.id.reviewNameText);
+            reviewScore     = itemView.findViewById(R.id.reviewRatingBar);
+            reviewMessage   = itemView.findViewById(R.id.reviewMessageText);
         }
     }
 }

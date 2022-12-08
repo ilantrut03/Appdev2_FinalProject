@@ -25,10 +25,10 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".FavoritesRecyclerAdapter"
+            android:name=".FavoritesAdapter"
             android:exported="false" />
         <activity
-            android:name=".FavoritesRecycler"
+            android:name=".Favorites"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -43,7 +43,7 @@
             android:name=".Payment"
             android:exported="false" />
         <activity
-            android:name=".Recycler"
+            android:name=".Adventures"
             android:exported="false" />
         <activity
             android:name=".DestinationPage"

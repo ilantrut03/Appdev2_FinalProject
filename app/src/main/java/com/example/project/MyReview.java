@@ -2,40 +2,22 @@ package com.example.project;
 
 public class MyReview {
 
-    private String score;
-    private String text;
-    private String name;
+    private String name, review, score;
 
-    public MyReview() {
+    public MyReview() { }
 
-    }
-    public MyReview(String score, String text, String name) {
-        this.score = score;
-        this.text = text;
+    public MyReview(String name, String review, String score) {
         this.name = name;
-    }
-
-    public String getScore() {
-        return score;
-    }
-
-    public void setScore(String score) {
+        this.review = review;
         this.score = score;
     }
 
-    public String getText() {
-        return text;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setText(String text) {
-        this.text = text;
-    }
+    public String getReview() { return review; }
+    public void setReview(String review) { this.review = review; }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getScore() { return score; }
+    public void setScore(String score) { this.score = score; }
 }

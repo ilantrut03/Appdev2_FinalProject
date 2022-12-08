@@ -36,17 +36,17 @@ import java.util.Map;
  * create an instance of this fragment.
  */
 public class SignUpFragment extends Fragment {
+
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
+
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
 
     public SignUpFragment() {
         // Required empty public constructor
@@ -80,23 +80,24 @@ public class SignUpFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
-        EditText firstNameInfo = view.findViewById(R.id.firstNameField);
-        EditText lastNameInfo = view.findViewById(R.id.lastNameField);
-        EditText phoneInfo = view.findViewById(R.id.phoneField);
-        EditText emailInfo = view.findViewById(R.id.emailField);
-        EditText passwordInfo = view.findViewById(R.id.passwordField);
-        EditText confirmPasswordInfo = view.findViewById(R.id.confirmPasswordField);
-        Button register = view.findViewById(R.id.registerbutton);
+
+        EditText firstNameInfo          = view.findViewById(R.id.firstNameField);
+        EditText lastNameInfo           = view.findViewById(R.id.lastNameField);
+        EditText phoneInfo              = view.findViewById(R.id.phoneField);
+        EditText emailInfo              = view.findViewById(R.id.emailField);
+        EditText passwordInfo           = view.findViewById(R.id.passwordField);
+        EditText confirmPasswordInfo    = view.findViewById(R.id.confirmPasswordField);
+        Button register                 = view.findViewById(R.id.registerbutton);
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast message = null;
+
                 String firstName = firstNameInfo.getText().toString();
                 String lastName = lastNameInfo.getText().toString();
                 String phone = phoneInfo.getText().toString();
@@ -104,12 +105,12 @@ public class SignUpFragment extends Fragment {
                 String password = passwordInfo.getText().toString();
                 String confirmPassword = confirmPasswordInfo.getText().toString();
 
-                //fAuth = FirebaseAuth.getInstance();
                 if (firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
 
                     message = Toast.makeText(getActivity(), "Please fill all the fields!", Toast.LENGTH_LONG);
                     message.show();
                 }
+
                 if (!firstName.isEmpty() && !lastName.isEmpty() && !phone.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty() && password.length() < 6) {
                     if (message != null) {
                         message.cancel();
@@ -117,6 +118,7 @@ public class SignUpFragment extends Fragment {
                     message = Toast.makeText(getActivity(), "Your password has to contain at least 6 characters!", Toast.LENGTH_LONG);
                     message.show();
                 }
+
                 if (!password.equals(confirmPassword)) {
                     if (message != null) {
                         message.cancel();
@@ -124,6 +126,7 @@ public class SignUpFragment extends Fragment {
                     message = Toast.makeText(getActivity(), "Your passwords do not match!", Toast.LENGTH_LONG);
                     message.show();
                 }
+
                 if (!firstName.isEmpty() && !lastName.isEmpty() && !phone.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty()
                         && (password.equals(confirmPassword)) && password.length() >= 6) {
                     fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -151,24 +154,14 @@ public class SignUpFragment extends Fragment {
                     if (message != null) {
                         message.cancel();
                     }
+
                     message = Toast.makeText(getActivity(), "You have registered successfully!", Toast.LENGTH_LONG);
                     message.show();
                     message = Toast.makeText(getActivity(), "Please sign in to continue!", Toast.LENGTH_LONG);
                     message.show();
-
-
                 }
-
             }
-
-
         });
-
-
         return view;
     }
-
-
-
-
 }

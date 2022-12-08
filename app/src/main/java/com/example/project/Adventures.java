@@ -1,6 +1,5 @@
 package com.example.project;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -24,12 +23,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Recycler extends AppCompatActivity implements ListenerInterface  {
+public class Adventures extends AppCompatActivity implements ListenerInterface  {
 
     RecyclerView recyclerView;
     private DatabaseReference database;
     private ArrayList<Destination> destinationsList;
-    private RecyclerAdapter recyclerAdapter;
+    private AdventuresAdapter recyclerAdapter;
     private ImageView backbtn;
     private EditText searchBar;
 
@@ -37,7 +36,7 @@ public class Recycler extends AppCompatActivity implements ListenerInterface  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle);
         getSupportActionBar().hide();
-        getWindow().setStatusBarColor(ContextCompat.getColor(Recycler.this, R.color.black));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Adventures.this, R.color.black));
 
         searchBar       = findViewById(R.id.searchBar);
         recyclerView    = findViewById(R.id.destinations);
@@ -47,13 +46,13 @@ public class Recycler extends AppCompatActivity implements ListenerInterface  {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         destinationsList = new ArrayList<>();
-        recyclerAdapter = new RecyclerAdapter(this, destinationsList, this);
+        recyclerAdapter = new AdventuresAdapter(this, destinationsList, this);
         recyclerView.setAdapter(recyclerAdapter);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Recycler.this, MainActivity.class);
+                Intent intent = new Intent(Adventures.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +69,7 @@ public class Recycler extends AppCompatActivity implements ListenerInterface  {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Recycler.this, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Adventures.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -98,7 +97,8 @@ public class Recycler extends AppCompatActivity implements ListenerInterface  {
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(Recycler.this, DestinationPage.class);
+        Intent intent = new Intent(Adventures.this, DestinationPage.class);
+
         intent.putExtra("Name",     destinationsList.get(position).getName());
         intent.putExtra("Image",    destinationsList.get(position).getImageUrl());
         intent.putExtra("Price",    destinationsList.get(position).getPrice());

@@ -21,6 +21,4 @@ public class Timer extends AppCompatActivity {
             }
         }, DISPLAY_TIME);
     }
-
-
-    }
+}

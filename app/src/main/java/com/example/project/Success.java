@@ -17,7 +17,7 @@ public class Success extends AppCompatActivity {
         btn = findViewById(R.id.button);
 
         btn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, Recycler.class);
+            Intent intent = new Intent(this, Adventures.class);
             startActivity(intent);
         });
     }

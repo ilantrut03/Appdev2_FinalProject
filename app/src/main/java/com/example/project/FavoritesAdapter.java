@@ -1,11 +1,9 @@
 package com.example.project;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +14,13 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class FavoritesRecyclerAdapter extends RecyclerView.Adapter<FavoritesRecyclerAdapter.ViewHolder>  {
+public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder>  {
 
     private final ListenerInterface listener;
     Context favContext;
     ArrayList<Destination> favoritesList;
 
-    public FavoritesRecyclerAdapter(Context favContext, ArrayList<Destination> favoritesList, ListenerInterface listener) {
+    public FavoritesAdapter(Context favContext, ArrayList<Destination> favoritesList, ListenerInterface listener) {
         this.favContext = favContext;
         this.favoritesList = favoritesList;
         this.listener = listener;
@@ -32,7 +30,7 @@ public class FavoritesRecyclerAdapter extends RecyclerView.Adapter<FavoritesRecy
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorites_view, parent, false);
-        return new FavoritesRecyclerAdapter.ViewHolder(view, listener);
+        return new FavoritesAdapter.ViewHolder(view, listener);
     }
 
     @Override

@@ -5,6 +5,8 @@ public class Destination {
     private String name, imageUrl, price, coordinates;
     private int nights, people;
 
+    public Destination() {  }
+
     public Destination(String name, String coordinates, String imageUrl, String price, int number_nights, int number_people) {
         this.name = name;
         this.coordinates = coordinates;

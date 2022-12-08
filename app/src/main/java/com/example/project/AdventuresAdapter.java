@@ -14,16 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.text.BreakIterator;
 import java.util.ArrayList;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.ViewHolder> {
 
     private final ListenerInterface listener;
     Context destinationContext;
     ArrayList<Destination> destinationsList;
 
-    public RecyclerAdapter(Context destinationContext, ArrayList<Destination> destinationsList, ListenerInterface listener) {        // new
+    public AdventuresAdapter(Context destinationContext, ArrayList<Destination> destinationsList, ListenerInterface listener) {        // new
         this.destinationContext = destinationContext;
         this.destinationsList = destinationsList;
         this.listener = listener;
@@ -68,16 +67,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             discover            = itemView.findViewById(R.id.button);
 
             itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (listener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) { listener.onItemClick(position); }
-                    }
-                }
-            });
-
-            discover.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (listener != null) {
