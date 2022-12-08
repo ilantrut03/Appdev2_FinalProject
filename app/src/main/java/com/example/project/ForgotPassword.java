@@ -17,8 +17,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPassword extends AppCompatActivity {
+
     FirebaseAuth auth;
     EditText email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         email = findViewById(R.id.forgotPasswordEmail);
@@ -45,16 +47,16 @@ public class ForgotPassword extends AppCompatActivity {
             }
         });
     }
+
     private void resetPassword() {
         email = findViewById(R.id.forgotPasswordEmail);
         String emailString = email.getText().toString();
         if (emailString.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Email provided is empty!", Toast.LENGTH_LONG).show();
-
-        }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
             Toast.makeText(getApplicationContext(), "Please provide a correct email!", Toast.LENGTH_LONG).show();
         }
+
         auth.sendPasswordResetEmail(emailString).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -64,8 +66,7 @@ public class ForgotPassword extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
-                }
-                else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Something went wrong! Please try again!", Toast.LENGTH_LONG).show();
                 }
             }

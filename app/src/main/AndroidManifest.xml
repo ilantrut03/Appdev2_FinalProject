@@ -25,9 +25,6 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".GithubAuthActivity"
-            android:exported="false" />
-        <activity
             android:name=".FavoritesRecyclerAdapter"
             android:exported="false" />
         <activity

@@ -24,10 +24,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class FavoritesRecycler extends AppCompatActivity implements ListenerInterface {
+
     RecyclerView recyclerView;
     private DatabaseReference database;
     private ArrayList<Destination> favoriteList;
     private FavoritesRecyclerAdapter favoriteRecyclerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,14 +78,12 @@ public class FavoritesRecycler extends AppCompatActivity implements ListenerInte
                 filterDestinationName((editable.toString()));
             }
         });
-
-
     }
 
     private void filterDestinationName(String searchTitle) {
         ArrayList<Destination> favDestFilterList = new ArrayList<>();
         for (Destination destination : favoriteList) {
-            if (destination.getLocation_name().toLowerCase().contains(searchTitle.toLowerCase())) {
+            if (destination.getName().toLowerCase().contains(searchTitle.toLowerCase())) {
                 favDestFilterList.add(destination);
             }
         }
@@ -93,7 +93,7 @@ public class FavoritesRecycler extends AppCompatActivity implements ListenerInte
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(FavoritesRecycler.this, DestinationPage.class);
-        intent.putExtra("Name", favoriteList.get(position).getLocation_name());
+        intent.putExtra("Name", favoriteList.get(position).getName());
         intent.putExtra("Image", favoriteList.get(position).getImageUrl());
         intent.putExtra("Price", favoriteList.get(position).getPrice());
         startActivity(intent);

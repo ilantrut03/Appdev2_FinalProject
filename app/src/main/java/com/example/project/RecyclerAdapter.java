@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,9 +18,11 @@ import java.text.BreakIterator;
 import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    private final ListenerInterface listener;       // new
+
+    private final ListenerInterface listener;
     Context destinationContext;
     ArrayList<Destination> destinationsList;
+
     public RecyclerAdapter(Context destinationContext, ArrayList<Destination> destinationsList, ListenerInterface listener) {        // new
         this.destinationContext = destinationContext;
         this.destinationsList = destinationsList;
@@ -36,52 +39,53 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Destination destination = destinationsList.get(position);
-        holder.destinationName.setText(String.valueOf(destination.getLocation_name()));
+        holder.destinationName.setText(String.valueOf(destination.getName()));
         holder.destinationPrice.setText(String.valueOf(destination.getPrice()));
+        holder.destinationNights.setText("" + destination.getNights());
         Glide.with(destinationContext).load(destination.getImageUrl()).into(holder.destinationImage);
-
-
-
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount() { return destinationsList.size(); }
 
-        return destinationsList.size();
-    }
     public void filterGiftNameList(ArrayList<Destination> filteredDestinationNameList) {
         destinationsList = filteredDestinationNameList;
         notifyDataSetChanged();
     }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-
-    public static class ViewHolder extends RecyclerView.ViewHolder { // new
         ImageView destinationImage;
-        TextView destinationName;
-        TextView destinationPrice;
-        public ViewHolder(@NonNull View itemView, ListenerInterface listener) {     // new
+        TextView destinationName, destinationPrice, destinationNights;
+        Button discover;
+
+        public ViewHolder(@NonNull View itemView, ListenerInterface listener) {
             super(itemView);
-            destinationImage = itemView.findViewById(R.id.destinationImageView);
-            destinationName = itemView.findViewById(R.id.destinationNameView);
-            destinationPrice = itemView.findViewById(R.id.destinationPriceView);
+            destinationName     = itemView.findViewById(R.id.destinationNameView);
+            destinationImage    = itemView.findViewById(R.id.destinationImageView);
+            destinationPrice    = itemView.findViewById(R.id.destinationPriceView);
+            destinationNights   = itemView.findViewById(R.id.destinationNightsView);
+            discover            = itemView.findViewById(R.id.button);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (listener != null) {
                         int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position);
-                        }
+                        if (position != RecyclerView.NO_POSITION) { listener.onItemClick(position); }
                     }
                 }
             });
 
+            discover.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) { listener.onItemClick(position); }
+                    }
+                }
+            });
         }
-
     }
-
-
-
-
 }

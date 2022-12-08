@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -7,80 +7,92 @@
 
     <ImageView
         android:id="@+id/destinationImageView"
-        android:layout_width="414dp"
-        android:layout_height="218dp"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
         android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/destinationPriceView"
-        android:layout_width="143dp"
-        android:layout_height="51dp"
+        android:id="@+id/dollarSign"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:text="$"
+        android:paddingLeft="10dp"
         android:layout_marginTop="168dp"
+        android:textAlignment="center"
         android:background="#837979"
         android:backgroundTint="#6E6A6A"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/destinationPriceView"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:background="#837979"
+        android:backgroundTint="#6E6A6A"
+        android:paddingRight="10dp"
+        android:layout_marginTop="168dp"
+        android:gravity="center"
+        android:text="1000"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/destinationImageView"
-        tools:ignore="MissingConstraints" />
+        android:layout_toRightOf="@id/dollarSign" />
 
     <TextView
         android:id="@+id/destinationNameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:text="Name"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/destinationPriceView" />
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/destinationImageView"/>
+
+    <TextView
+        android:id="@+id/destinationNightsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/destinationNameView"
+        android:layout_below="@+id/destinationImageView"/>
+
+    <TextView
+        android:id="@+id/nights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nights"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@+id/destinationNightsView"
+        android:layout_below="@+id/destinationImageView"/>
 
     <TextView
         android:id="@+id/descriptionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/destinationNameView" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:tint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/destinationPriceView"
-        app:layout_constraintEnd_toEndOf="@+id/destinationPriceView"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/destinationImageView"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_baseline_attach_money_24" />
+        android:text="Description"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/destinationNameView" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
         android:layout_width="107dp"
         android:layout_height="57dp"
-        android:layout_marginStart="276dp"
-        android:layout_marginTop="4dp"
         android:backgroundTint="#0099FF"
         android:text="Discover"
         android:textColor="#FFFDFD"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destinationImageView" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="290dp"
+        android:layout_below="@+id/destinationImageView" />
+</RelativeLayout>
