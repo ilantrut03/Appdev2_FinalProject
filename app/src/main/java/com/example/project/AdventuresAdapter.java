@@ -2,6 +2,7 @@ package com.example.project;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +40,20 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Destination destination = destinationsList.get(position);
         holder.destinationName.setText(String.valueOf(destination.getName()));
-        holder.destinationPrice.setText("" + destination.getPrice());
-        holder.destinationNights.setText("" + destination.getNights());
+        holder.destinationPrice.setText(destination.getPrice());
+        holder.destinationNights.setText(destination.getNights());
+        holder.locationView.setText(destination.getCountry());
         Glide.with(destinationContext).load(destination.getImageUrl()).into(holder.destinationImage);
+
+        holder.discover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), MapsActivity.class);
+                i.putExtra("Latitude", destination.getLatitude());
+                i.putExtra("Longitude", destination.getLongitude());
+                v.getContext().startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -55,7 +67,7 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView destinationImage;
-        TextView destinationName, destinationPrice, destinationNights;
+        TextView destinationName, destinationPrice, destinationNights, locationView;
         Button discover;
 
         public ViewHolder(@NonNull View itemView, ListenerInterface listener) {
@@ -64,7 +76,8 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
             destinationImage    = itemView.findViewById(R.id.destinationImageView);
             destinationPrice    = itemView.findViewById(R.id.destinationPriceView);
             destinationNights   = itemView.findViewById(R.id.destinationNightsView);
-            discover            = itemView.findViewById(R.id.button);
+            locationView        = itemView.findViewById(R.id.locationView);
+            discover            = itemView.findViewById(R.id.showMaps);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

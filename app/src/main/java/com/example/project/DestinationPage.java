@@ -41,6 +41,9 @@ public class DestinationPage extends AppCompatActivity {
         String nights       = getIntent().getStringExtra("Nights");
         String people       = getIntent().getStringExtra("People");
         String price        = getIntent().getStringExtra("Price");
+        String country        = getIntent().getStringExtra("Country");
+        String latitude        = getIntent().getStringExtra("Latitude");
+        String longitude        = getIntent().getStringExtra("Longitude");
 
         priceView       = findViewById(R.id.priceView);
         nameView        = findViewById(R.id.destinationName);
@@ -51,7 +54,7 @@ public class DestinationPage extends AppCompatActivity {
         descriptionView = findViewById(R.id.destinationDescription);
         addToFavorite   = findViewById(R.id.destinationAddToFav);
 
-        Button bookButton = findViewById(R.id.button);
+        Button bookButton = findViewById(R.id.showMaps);
 
         imageView   = (ImageView) findViewById(R.id.imageView);
         back     = findViewById(R.id.imageViewBack);
@@ -59,7 +62,7 @@ public class DestinationPage extends AppCompatActivity {
         Glide.with(this).load(image).into(imageView);
         priceView.setText(price);
         nameView.setText(name);
-        countryView.setText("Country");
+        countryView.setText(country);
         nightsView.setText(nights);
         peopleView.setText(people);
         hostView.setText(host);
@@ -82,7 +85,8 @@ public class DestinationPage extends AppCompatActivity {
             }
         });
 
-        Destination destination = new Destination(name, host, description, coordinates, image, nights, people, price);
+        Destination destination = new Destination(name, host, description, coordinates, image, nights,
+                people, price, country, latitude, longitude);
         String loggedInUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         favDBRef = FirebaseDatabase.getInstance().getReference().child("Favorites" + loggedInUserID);
         addToFavorite.setOnClickListener(new View.OnClickListener() {
