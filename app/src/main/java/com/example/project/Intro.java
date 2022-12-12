@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 public class Intro extends AppCompatActivity {
-    private static int DISPLAY_TIME = 3000;
+    private static int DISPLAY_TIME = 2100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

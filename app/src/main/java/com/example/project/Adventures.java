@@ -106,11 +106,13 @@ public class Adventures extends AppCompatActivity implements ListenerInterface  
     public void onItemClick(int position) {
         Intent intent = new Intent(Adventures.this, DestinationPage.class);
 
-        intent.putExtra("Name",     destinationsList.get(position).getName());
-        intent.putExtra("Image",    destinationsList.get(position).getImageUrl());
-        intent.putExtra("Price",    destinationsList.get(position).getPrice());
-        intent.putExtra("Nights",   destinationsList.get(position).getNights());
-        intent.putExtra("People",   destinationsList.get(position).getPeople());
+        intent.putExtra("Name",         destinationsList.get(position).getName());
+        intent.putExtra("Host",         destinationsList.get(position).getHost());
+        intent.putExtra("Description",  destinationsList.get(position).getDescription());
+        intent.putExtra("Image",        destinationsList.get(position).getImageUrl());
+        intent.putExtra("Price",        destinationsList.get(position).getPrice());
+        intent.putExtra("Nights",       destinationsList.get(position).getNights());
+        intent.putExtra("People",       destinationsList.get(position).getPeople());
         startActivity(intent);
         finish();
     }

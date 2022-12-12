@@ -47,7 +47,6 @@ public class Favorites extends AppCompatActivity implements ListenerInterface {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Destination destination = dataSnapshot.getValue(Destination.class);
                     favoriteList.add(destination);
-
                 }
                 favoriteRecyclerAdapter.notifyDataSetChanged();
             }

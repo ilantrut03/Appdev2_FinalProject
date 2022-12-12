@@ -22,8 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 public class DestinationPage extends AppCompatActivity {
 
     DatabaseReference favDBRef;
-    TextView nameView, priceView, seeReviews, addReview, addToFavorite;
-    ImageView imageView, backbtn;
+    TextView priceView, nameView, countryView, nightsView, peopleView, hostView, descriptionView,  addToFavorite;
+    ImageView imageView, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,49 +32,39 @@ public class DestinationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destination);
 
+        String name         = getIntent().getStringExtra("Name");
+        String host         = getIntent().getStringExtra("Host");
+        String description  = getIntent().getStringExtra("Description");
         String coordinates  = getIntent().getStringExtra("Coordinates");
         String image        = String.valueOf(getIntent().getStringExtra("Image"));
-        String name         = getIntent().getStringExtra("Name");
         String nights       = getIntent().getStringExtra("Nights");
         String people       = getIntent().getStringExtra("People");
         String price        = getIntent().getStringExtra("Price");
 
-
-
-        nameView       = findViewById(R.id.destinationName);
-        priceView      = findViewById(R.id.priceView);
-        seeReviews     = findViewById(R.id.seeReviewsText);
-        addReview      = findViewById(R.id.destinationAddReview);
-        addToFavorite  = findViewById(R.id.destinationAddToFav);
+        priceView       = findViewById(R.id.priceView);
+        nameView        = findViewById(R.id.destinationName);
+        countryView     = findViewById(R.id.destinationCountry);
+        nightsView      = findViewById(R.id.destinationNights);
+        peopleView      = findViewById(R.id.destinationPeople);
+        hostView        = findViewById(R.id.destinationHost);
+        descriptionView = findViewById(R.id.destinationDescription);
+        addToFavorite   = findViewById(R.id.destinationAddToFav);
 
         Button bookButton = findViewById(R.id.button);
 
         imageView   = (ImageView) findViewById(R.id.imageView);
-        backbtn     = findViewById(R.id.imageViewBack);
+        back     = findViewById(R.id.imageViewBack);
 
-        nameView.setText(name);
-        priceView.setText(price);
         Glide.with(this).load(image).into(imageView);
+        priceView.setText(price);
+        nameView.setText(name);
+        countryView.setText("Country");
+        nightsView.setText(nights);
+        peopleView.setText(people);
+        hostView.setText(host);
+        descriptionView.setText(description);
 
-        seeReviews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ReviewsRecycler.class);
-                intent.putExtra("name", name);
-                startActivity(intent);
-            }
-        });
-
-        addReview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Review.class);
-                intent.putExtra("name", name);
-                startActivity(intent);
-            }
-        });
-
-        backbtn.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DestinationPage.this, Adventures.class);
@@ -90,7 +80,7 @@ public class DestinationPage extends AppCompatActivity {
             }
         });
 
-        Destination destination = new Destination(coordinates, image, name, nights, people, price);
+        Destination destination = new Destination(name, host, description, coordinates, image, nights, people, price);
         String loggedInUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         favDBRef = FirebaseDatabase.getInstance().getReference().child("Favorites" + loggedInUserID);
         addToFavorite.setOnClickListener(new View.OnClickListener() {

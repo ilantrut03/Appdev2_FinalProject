@@ -2,13 +2,16 @@ package com.example.project;
 
 public class Destination {
 
-    private String name, imageUrl, coordinates, price, nights, people;
+    private String name, host, description, imageUrl, coordinates, price, nights, people;
 
     public Destination() {
     }
 
-    public Destination(String name, String imageUrl, String coordinates, String price, String nights, String people) {
+    public Destination(String name, String host, String description, String imageUrl, String coordinates,
+                       String price, String nights, String people) {
         this.name = name;
+        this.host = host;
+        this.description = description;
         this.imageUrl = imageUrl;
         this.coordinates = coordinates;
         this.price = price;
@@ -22,6 +25,22 @@ public class Destination {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImageUrl() {
