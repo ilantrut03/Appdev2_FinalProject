@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -37,7 +38,7 @@ import java.util.Map;
  */
 public class SignUpFragment extends Fragment {
 
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();;
     FirebaseFirestore fStore;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,7 +82,6 @@ public class SignUpFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
@@ -98,15 +98,14 @@ public class SignUpFragment extends Fragment {
             public void onClick(View view) {
                 Toast message = null;
 
-                String firstName = firstNameInfo.getText().toString();
-                String lastName = lastNameInfo.getText().toString();
-                String phone = phoneInfo.getText().toString();
-                String email = emailInfo.getText().toString();
-                String password = passwordInfo.getText().toString();
-                String confirmPassword = confirmPasswordInfo.getText().toString();
+                String firstName        = firstNameInfo.getText().toString();
+                String lastName         = lastNameInfo.getText().toString();
+                String phone            = phoneInfo.getText().toString();
+                String email            = emailInfo.getText().toString();
+                String password         = passwordInfo.getText().toString();
+                String confirmPassword  = confirmPasswordInfo.getText().toString();
 
                 if (firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-
                     message = Toast.makeText(getActivity(), "Please fill all the fields!", Toast.LENGTH_LONG);
                     message.show();
                 }
@@ -127,8 +126,14 @@ public class SignUpFragment extends Fragment {
                     message.show();
                 }
 
-                if (!firstName.isEmpty() && !lastName.isEmpty() && !phone.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty()
-                        && (password.equals(confirmPassword)) && password.length() >= 6) {
+                if (!firstName.isEmpty() &&
+                        !lastName.isEmpty() &&
+                        !phone.isEmpty() &&
+                        !email.isEmpty() &&
+                        !password.isEmpty() &&
+                        !confirmPassword.isEmpty() &&
+                        (password.equals(confirmPassword)) &&
+                        password.length() >= 6) {
                     fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                         @Override
@@ -151,9 +156,7 @@ public class SignUpFragment extends Fragment {
                         }
                     });
 
-                    if (message != null) {
-                        message.cancel();
-                    }
+                    if (message != null) { message.cancel(); }
 
                     message = Toast.makeText(getActivity(), "You have registered successfully!", Toast.LENGTH_LONG);
                     message.show();

@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 //import com.google.firebase.auth.AuthResult;
 //import com.google.firebase.auth.FirebaseAuth;
 
@@ -34,7 +35,7 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class LoginFragment extends Fragment {
 
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,8 +86,6 @@ public class LoginFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        fAuth = FirebaseAuth.getInstance();
-
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         EditText emailInfo = view.findViewById(R.id.emailLoginField);
@@ -115,20 +114,17 @@ public class LoginFragment extends Fragment {
             }
         });
 
-
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast message = null;
                 String email = emailInfo.getText().toString();
                 String password = passwordInfo.getText().toString();
-                fAuth = FirebaseAuth.getInstance();
-                if (email.isEmpty() || password.isEmpty()) {
 
+                if (email.isEmpty() || password.isEmpty()) {
                     message = Toast.makeText(getActivity(), "Please fill out all the fields.", Toast.LENGTH_LONG);
                     message.show();
-                }
-                else {
+                } else {
                     fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

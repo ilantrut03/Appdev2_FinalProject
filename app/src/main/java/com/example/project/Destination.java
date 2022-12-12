@@ -2,34 +2,18 @@ package com.example.project;
 
 public class Destination {
 
-    private String coordinates, imageUrl, name;
-    private int nights, people, price;
+    private String name, imageUrl, coordinates, price, nights, people;
 
-    public Destination() {  }
+    public Destination() {
+    }
 
-    public Destination(String coordinates, String imageUrl, String name, int nights, int people, int price) {
-        this.coordinates = coordinates;
-        this.imageUrl = imageUrl;
+    public Destination(String name, String imageUrl, String coordinates, String price, String nights, String people) {
         this.name = name;
+        this.imageUrl = imageUrl;
+        this.coordinates = coordinates;
+        this.price = price;
         this.nights = nights;
         this.people = people;
-        this.price = price;
-    }
-
-    public String getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -40,27 +24,43 @@ public class Destination {
         this.name = name;
     }
 
-    public int getNights() {
-        return nights;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setNights(int nights) {
-        this.nights = nights;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public int getPeople() {
-        return people;
+    public String getCoordinates() {
+        return coordinates;
     }
 
-    public void setPeople(int people) {
-        this.people = people;
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getNights() {
+        return nights;
+    }
+
+    public void setNights(String nights) {
+        this.nights = nights;
+    }
+
+    public String getPeople() {
+        return people;
+    }
+
+    public void setPeople(String people) {
+        this.people = people;
     }
 }

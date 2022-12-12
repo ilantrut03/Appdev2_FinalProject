@@ -35,9 +35,9 @@ public class DestinationPage extends AppCompatActivity {
         String coordinates  = getIntent().getStringExtra("Coordinates");
         String image        = String.valueOf(getIntent().getStringExtra("Image"));
         String name         = getIntent().getStringExtra("Name");
-        int nights          = getIntent().getIntExtra("Nights" , 0);
-        int people          = getIntent().getIntExtra("People", 0);
-        int price           = getIntent().getIntExtra("Price", 0);
+        String nights       = getIntent().getStringExtra("Nights");
+        String people       = getIntent().getStringExtra("People");
+        String price        = getIntent().getStringExtra("Price");
 
 
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,21 +23,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Adventures extends AppCompatActivity implements ListenerInterface  {
 
-    RecyclerView recyclerView;
-    private FirebaseFirestore database;
-    private List<Destination> destinationsList;
+    private RecyclerView recyclerView;
+    private ArrayList<Destination> destinationsList;
     private AdventuresAdapter recyclerAdapter;
+
     private ImageView backbtn;
     private EditText searchBar;
+
+    private DatabaseReference database;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +47,12 @@ public class Adventures extends AppCompatActivity implements ListenerInterface  
         searchBar       = findViewById(R.id.searchBar);
         recyclerView    = findViewById(R.id.destinations);
         backbtn         = findViewById(R.id.imageButtonRecycle);
-        database        = FirebaseFirestore.getInstance();
+        database        = FirebaseDatabase.getInstance().getReference("location");
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         destinationsList = new ArrayList<>();
-        recyclerAdapter = new AdventuresAdapter(this, (ArrayList<Destination>) destinationsList, this);
+        recyclerAdapter = new AdventuresAdapter(this, destinationsList, this);
         recyclerView.setAdapter(recyclerAdapter);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -63,29 +63,22 @@ public class Adventures extends AppCompatActivity implements ListenerInterface  
             }
         });
 
-        database.collection("location").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        database.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    destinationsList = task.getResult().toObjects(Destination.class);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Destination destination = dataSnapshot.getValue(Destination.class);
+                    destinationsList.add(destination);
+
                 }
+                recyclerAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase Database Error", error.toString());
             }
         });
-//        database.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    Destination destination = dataSnapshot.getValue(Destination.class);
-//                    destinationsList.add(destination);
-//                }
-//                recyclerAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(Adventures.this, "Could not get Destinations.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
