@@ -110,9 +110,12 @@ public class Adventures extends AppCompatActivity implements ListenerInterface  
         intent.putExtra("Host",         destinationsList.get(position).getHost());
         intent.putExtra("Description",  destinationsList.get(position).getDescription());
         intent.putExtra("Image",        destinationsList.get(position).getImageUrl());
+        intent.putExtra("Country",      destinationsList.get(position).getCountry());
         intent.putExtra("Price",        destinationsList.get(position).getPrice());
         intent.putExtra("Nights",       destinationsList.get(position).getNights());
         intent.putExtra("People",       destinationsList.get(position).getPeople());
+        intent.putExtra("Latitude",     destinationsList.get(position).getLatitude());
+        intent.putExtra("Longitude",    destinationsList.get(position).getLongitude());
         startActivity(intent);
         finish();
     }
