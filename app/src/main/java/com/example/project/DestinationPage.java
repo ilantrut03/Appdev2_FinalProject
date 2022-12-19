@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,8 +25,9 @@ public class DestinationPage extends AppCompatActivity {
 
     DatabaseReference favDBRef;
     TextView priceView, nameView, countryView, nightsView, peopleView, hostView, descriptionView,  addToFavorite;
-    ImageView imageView, back;
+    ImageView imageView, back, profile;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -56,6 +58,7 @@ public class DestinationPage extends AppCompatActivity {
 
         imageView   = (ImageView) findViewById(R.id.imageView);
         back     = findViewById(R.id.imageViewBack);
+        profile = findViewById(R.id.profile);
 
         Glide.with(this).load(image).into(imageView);
         priceView.setText(price);
@@ -72,6 +75,15 @@ public class DestinationPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        /*
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DestinationPage.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        */
 
         bookButton.setOnClickListener(new View.OnClickListener() {
             @Override
