@@ -2,26 +2,12 @@ package com.example.project;
 
 public class Destination {
 
-    private String name, host, description, imageUrl, coordinates, price, nights, people, country,
-            latitude, longitude;
+    private String name, host, description, imageUrl, price, nights, people, country, latitude, longitude;
 
     public Destination() {
     }
 
-    public Destination(String name, String host, String description, String imageUrl, String coordinates,
-                       String price, String nights, String people, String country, String latitude,
-                       String longitude) {
-        this.name = name;
-        this.host = host;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.coordinates = coordinates;
-        this.price = price;
-        this.nights = nights;
-        this.people = people;
-        this.country = country;
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public Destination(String name, String host, String description, String image, String nights, String people, String price, String country, String latitude, String longitude) {
     }
 
     public String getName() {
@@ -54,14 +40,6 @@ public class Destination {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public String getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
     }
 
     public String getPrice() {

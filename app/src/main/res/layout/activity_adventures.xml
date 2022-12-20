@@ -54,28 +54,6 @@
         android:layout_below="@+id/destinationImageView"/>
 
     <TextView
-        android:id="@+id/destinationNightsView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="12sp"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/destinationNameView"
-        android:layout_below="@+id/destinationImageView"/>
-
-    <TextView
-        android:id="@+id/nights"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="nights"
-        android:textSize="12sp"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="4dp"
-        android:layout_toRightOf="@+id/destinationNightsView"
-        android:layout_below="@+id/destinationImageView"/>
-
-    <TextView
         android:id="@+id/locationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

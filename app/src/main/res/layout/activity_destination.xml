@@ -93,44 +93,21 @@
                 android:layout_below="@+id/destinationName" />
 
             <TextView
-                android:id="@+id/destinationNights"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="16sp"
-                android:layout_marginTop="4dp"
-                android:layout_marginLeft="54dp"
-                android:layout_below="@+id/destinationName"
-                android:layout_toRightOf="@+id/destinationCountry"/>
-
-            <TextView
-                android:id="@+id/nights"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="nights"
-                android:textSize="16sp"
-                android:paddingRight="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_below="@+id/destinationName"
-                android:layout_toRightOf="@+id/destinationNights"/>
-
-            <TextView
                 android:id="@+id/destinationPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textSize="16sp"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="120dp"
                 android:layout_below="@+id/destinationName"
-                android:layout_toRightOf="@+id/nights"/>
+                android:layout_toRightOf="@+id/destinationCountry"/>
 
             <TextView
                 android:id="@+id/people"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="people"
+                android:text="spots left"
                 android:textSize="16sp"
                 android:paddingRight="10dp"
                 android:layout_marginTop="4dp"

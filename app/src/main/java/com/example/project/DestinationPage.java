@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,8 +25,9 @@ public class DestinationPage extends AppCompatActivity {
 
     DatabaseReference favDBRef;
     TextView priceView, nameView, countryView, nightsView, peopleView, hostView, descriptionView,  addToFavorite;
-    ImageView imageView, back;
+    ImageView imageView, back, profile;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -36,19 +38,17 @@ public class DestinationPage extends AppCompatActivity {
         String name         = getIntent().getStringExtra("Name");
         String host         = getIntent().getStringExtra("Host");
         String description  = getIntent().getStringExtra("Description");
-        String coordinates  = getIntent().getStringExtra("Coordinates");
         String image        = String.valueOf(getIntent().getStringExtra("Image"));
         String nights       = getIntent().getStringExtra("Nights");
         String people       = getIntent().getStringExtra("People");
         String price        = getIntent().getStringExtra("Price");
-        String country        = getIntent().getStringExtra("Country");
-        String latitude        = getIntent().getStringExtra("Latitude");
-        String longitude        = getIntent().getStringExtra("Longitude");
+        String country      = getIntent().getStringExtra("Country");
+        String latitude     = getIntent().getStringExtra("Latitude");
+        String longitude    = getIntent().getStringExtra("Longitude");
 
         priceView       = findViewById(R.id.priceView);
         nameView        = findViewById(R.id.destinationName);
         countryView     = findViewById(R.id.destinationCountry);
-        nightsView      = findViewById(R.id.destinationNights);
         peopleView      = findViewById(R.id.destinationPeople);
         hostView        = findViewById(R.id.destinationHost);
         descriptionView = findViewById(R.id.destinationDescription);
@@ -58,12 +58,12 @@ public class DestinationPage extends AppCompatActivity {
 
         imageView   = (ImageView) findViewById(R.id.imageView);
         back     = findViewById(R.id.imageViewBack);
+        profile = findViewById(R.id.profile);
 
         Glide.with(this).load(image).into(imageView);
         priceView.setText(price);
         nameView.setText(name);
         countryView.setText(country);
-        nightsView.setText(nights);
         peopleView.setText(people);
         hostView.setText(host);
         descriptionView.setText(description);
@@ -75,6 +75,15 @@ public class DestinationPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        /*
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DestinationPage.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        */
 
         bookButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +94,8 @@ public class DestinationPage extends AppCompatActivity {
             }
         });
 
-        Destination destination = new Destination(name, host, description, coordinates, image, nights,
-                people, price, country, latitude, longitude);
+        Destination destination = new Destination(name, host, description, image, nights, people, price,
+                country, latitude, longitude);
         String loggedInUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         favDBRef = FirebaseDatabase.getInstance().getReference().child("Favorites" + loggedInUserID);
         addToFavorite.setOnClickListener(new View.OnClickListener() {
