@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/destinationImageView"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/dollarSign"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:text="$"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="168dp"
+        android:textAlignment="center"
+        android:background="#837979"
+        android:backgroundTint="#6E6A6A"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/destinationPriceView"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:background="#837979"
+        android:backgroundTint="#6E6A6A"
+        android:paddingRight="10dp"
+        android:layout_marginTop="168dp"
+        android:gravity="center"
+        android:text="1000"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_toRightOf="@id/dollarSign" />
+
+    <TextView
+        android:id="@+id/destinationNameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/destinationImageView"/>
+
+    <TextView
+        android:id="@+id/destinationNightsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/destinationNameView"
+        android:layout_below="@+id/destinationImageView"/>
+
+    <TextView
+        android:id="@+id/nights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nights"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@+id/destinationNightsView"
+        android:layout_below="@+id/destinationImageView"/>
+
+    <TextView
+        android:id="@+id/locationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/destinationNameView" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/showMaps"
+        android:layout_width="107dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#0099FF"
+        android:text="Discover"
+        android:textColor="#FFFDFD"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="290dp"
+        android:layout_below="@+id/destinationImageView" />
+</RelativeLayout>

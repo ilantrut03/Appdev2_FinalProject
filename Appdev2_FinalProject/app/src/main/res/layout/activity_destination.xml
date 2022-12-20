@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="horizontal"
+    android:verticalScrollbarPosition="right"
+    tools:context=".Destination">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        app:srcCompat="@drawable/left_arrow" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:layout_below="@+id/imageView">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:context=".Destination">
+
+            <TextView
+                android:id="@+id/dollarSign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textSize="38sp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp" />
+
+            <TextView
+                android:id="@+id/priceView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="price"
+                android:textSize="38sp"
+                android:layout_marginTop="12dp"
+                android:layout_toRightOf="@+id/dollarSign"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showMaps"
+                android:layout_width="180dp"
+                android:layout_height="54dp"
+                android:backgroundTint="#0099FF"
+                android:text="Book Now"
+                android:textColor="#FFFDFD"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="108dp"
+                android:layout_toRightOf="@+id/priceView"/>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="72dp"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="#505050" />
+
+            <TextView
+                android:id="@+id/destinationName"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:text="Name"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/destinationCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Country"
+                android:textSize="16sp"
+                android:paddingRight="90dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="12dp"
+                android:layout_below="@+id/destinationName" />
+
+            <TextView
+                android:id="@+id/destinationNights"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="54dp"
+                android:layout_below="@+id/destinationName"
+                android:layout_toRightOf="@+id/destinationCountry"/>
+
+            <TextView
+                android:id="@+id/nights"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nights"
+                android:textSize="16sp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_below="@+id/destinationName"
+                android:layout_toRightOf="@+id/destinationNights"/>
+
+            <TextView
+                android:id="@+id/destinationPeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="12dp"
+                android:layout_below="@+id/destinationName"
+                android:layout_toRightOf="@+id/nights"/>
+
+            <TextView
+                android:id="@+id/people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="people"
+                android:textSize="16sp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_below="@+id/destinationName"
+                android:layout_toRightOf="@+id/destinationPeople"/>
+
+            <TextView
+                android:id="@+id/destinationAddToFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to Favorites"
+                android:textSize="16sp"
+                android:textColor="#0099FF"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="100dp"
+                android:layout_toRightOf="@+id/destinationName"
+                android:layout_below="@id/divider"/>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="160dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/hostBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider2"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:text="Hosted by: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/destinationHost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider2"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:text="Hosted by 5 star hotels"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/hostBy"/>
+
+            <TextView
+                android:id="@+id/destinationDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Each Place is beautiful and unique, They offer exclusive management offered by the best of the best, as well as words are not enough to describe this place it is a must see country and city."
+                android:textSize="16dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_below="@+id/destinationHost"/>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>
